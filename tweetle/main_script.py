@@ -1,5 +1,5 @@
 import click
-import main_script
+import twitter
 import os
 from dotenv import load_dotenv
 import ProjPySQL
@@ -16,7 +16,7 @@ def tweetObj():
     access_token = os.environ.get('access_token')
     access_token_secret = os.environ.get('access_token_secret')
 
-    twitter = main_script.Twitter(consumer_key, consumer_secret, access_token, access_token_secret)
+    twitter = twitter.Twitter(consumer_key, consumer_secret, access_token, access_token_secret)
 
     return twitter
 
