@@ -3,7 +3,7 @@ import mysql.connector
 from datetime import datetime
 
 #Establishing connection and creating cursor
-mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user="root",password="cool@12345")
+mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user="user",password="pass")
 
 #Table creation
 def create():
