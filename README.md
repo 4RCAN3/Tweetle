@@ -4,7 +4,7 @@ A python CLI that can be used to control your twitter account through command li
 
 <br>
 <br>
-![Alt text](https://user-images.githubusercontent.com/69053040/109979793-48963e80-7d25-11eb-9afc-64f7a1a03ec3.png?raw=true "Title")
+![Alt text](https://i.pinimg.com/originals/86/0d/a9/860da914014164677d0d3d0cb82c564e.jpg?raw=true "Title")
 <br>
 <br>
 
