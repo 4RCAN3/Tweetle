@@ -1,9 +1,13 @@
 #Importing required modules
 import mysql.connector
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #Establishing connection and creating cursor
-mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user="user",password="pass")
+mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user= os.environ.get('user'),password=os.environ.get('pass'))
 
 #Table creation
 def create():

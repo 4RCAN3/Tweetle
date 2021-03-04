@@ -14,6 +14,6 @@ setup(
     install_requires = read_requirements(),
     entry_points = '''
     [console_scripts]
-    tweetle = tweetle.main_script:cli
+    tweetle = tweetle.cli:cli
     '''
 )

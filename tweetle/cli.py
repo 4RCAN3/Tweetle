@@ -1,5 +1,5 @@
 import click
-import twitter
+import tweefeed
 import os
 from dotenv import load_dotenv
 import ProjPySQL
@@ -15,15 +15,14 @@ def tweetObj():
     consumer_secret = os.environ.get('consumer_secret')
     access_token = os.environ.get('access_token')
     access_token_secret = os.environ.get('access_token_secret')
-
-    twitter = twitter.Twitter(consumer_key, consumer_secret, access_token, access_token_secret)
+    twitter = tweefeed.Twitter(consumer_key, consumer_secret, access_token, access_token_secret)
 
     return twitter
 
 @click.group()
 def cli():
     '''Welcome to Tweetle. 
-A CLI Made to control your twitter account and save information through your command line.
+A CLI Made to control your tweefeed account and save information through your command line.
 '''
     
     pass
@@ -70,7 +69,7 @@ Example usage: tweetle fetch Elon Musk 3'''
     tweet_obj = tweetObj()
     tweets = tweet_obj.fetch(' '.join(i for i in name), int(num))
     for tweet in tweets:
-        tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https://twitter.com/twitter/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
+        tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https:/ tweefeed.com tweefeed/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
         ProjPySQL.Insert_Data(tweet_data)
     
     click.echo(f'Added {num} tweets to the database!')
