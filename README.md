@@ -5,6 +5,8 @@ A python CLI that can be used to control your twitter account through command li
 
 ![Alt text](https://i.pinimg.com/originals/86/0d/a9/860da914014164677d0d3d0cb82c564e.jpg?raw=true "Title")
 
+[Logo Credits](https://www.behance.net/gallery/10067191/Tweetle-Bird-Kit-Packaging)
+
 
 ## What can it do?
 
