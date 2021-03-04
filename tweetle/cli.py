@@ -69,7 +69,7 @@ Example usage: tweetle fetch Elon Musk 3'''
     tweet_obj = tweetObj()
     tweets = tweet_obj.fetch(' '.join(i for i in name), int(num))
     for tweet in tweets:
-        tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https:/ tweefeed.com tweefeed/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
+        tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https://twitter.com/twitter/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
         ProjPySQL.Insert_Data(tweet_data)
     
     click.echo(f'Added {num} tweets to the database!')
