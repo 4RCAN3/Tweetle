@@ -2,11 +2,8 @@
 
 A python CLI that can be used to control your twitter account through command line.
 
-<br>
-<br>
+
 ![Alt text](https://i.pinimg.com/originals/86/0d/a9/860da914014164677d0d3d0cb82c564e.jpg?raw=true "Title")
-<br>
-<br>
 
 
 ## What can it do?
