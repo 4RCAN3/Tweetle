@@ -3,7 +3,7 @@
 A python CLI that can be used to control your twitter account through command line.
 
 
-![Alt text](https://i.pinimg.com/originals/86/0d/a9/860da914014164677d0d3d0cb82c564e.jpg?raw=true "Title")
+![Alt text](https://media.discordapp.net/attachments/741665327271903293/822123446699032656/unknown.png?raw=true "Title")
 
 [Logo Credits](https://www.behance.net/gallery/10067191/Tweetle-Bird-Kit-Packaging)
 
