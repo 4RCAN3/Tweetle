@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Establishing connection and creating cursor
-mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user= os.environ.get('user'),password=os.environ.get('pass'))
+mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user= os.environ.get('user'),password=os.environ.get('pass'), port = 3306)
 
 #Table creation
 def create():
