@@ -29,6 +29,7 @@ Tweetle is an easy to use CLI, with extensive commands.
 ## Authors
 
 * **ARC4N3** - *Initial work* 
+* [**BlaZe**](https://github.com/BlaZeSama) - *MySql handling*
 
 ## License
 
