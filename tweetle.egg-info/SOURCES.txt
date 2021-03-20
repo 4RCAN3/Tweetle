@@ -1,8 +1,0 @@
-setup.py
-tweetle/__init__.py
-tweetle/cli.py
-tweetle.egg-info/PKG-INFO
-tweetle.egg-info/SOURCES.txt
-tweetle.egg-info/dependency_links.txt
-tweetle.egg-info/entry_points.txt
-tweetle.egg-info/top_level.txt
