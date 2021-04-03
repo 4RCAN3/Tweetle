@@ -33,10 +33,7 @@ def cli():
                                                             ''',fg = 'green')
 
     while True:
-        '''consumer_key=C1gXCLn6fITSUb6uqFot9XYgl
-consumer_secret=seLZWqSX1jI1bn1PbWcHvA55jbqIYc1VLxmDuXbQwnp9c5r7Rm
-access_token=1140147595408363521-VVAya7SNuzuqFyhQI1y2wxiNBQXEZD
-access_token_secret=VRcsRp6s7idjGD1BrVbaOYMv3Cm6hdM2CkmUOlNhczUx0'''
+        
         click.secho('Looking for a user...', fg = 'yellow')
         if os.environ.get('consumer_key') != None and os.environ.get('consumer_secret') and os.environ.get('access_token') != None and os.environ.get('access_token_secret') != None:
             
