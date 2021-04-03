@@ -19,9 +19,68 @@ def tweetObj():
 
     return twitter
 
-@click.group()
+
+@click.command()
 def cli():
-    '''
+    click.secho('''
+
+████████ ██     ██ ███████ ███████ ████████ ██      ███████ 
+   ██    ██     ██ ██      ██         ██    ██      ██      
+   ██    ██  █  ██ █████   █████      ██    ██      █████   
+   ██    ██ ███ ██ ██      ██         ██    ██      ██      
+   ██     ███ ███  ███████ ███████    ██    ███████ ███████ 
+                                                            
+                                                            ''',fg = 'green')
+
+    while True:
+        '''consumer_key=C1gXCLn6fITSUb6uqFot9XYgl
+consumer_secret=seLZWqSX1jI1bn1PbWcHvA55jbqIYc1VLxmDuXbQwnp9c5r7Rm
+access_token=1140147595408363521-VVAya7SNuzuqFyhQI1y2wxiNBQXEZD
+access_token_secret=VRcsRp6s7idjGD1BrVbaOYMv3Cm6hdM2CkmUOlNhczUx0'''
+        click.secho('Looking for a user...', fg = 'yellow')
+        if os.environ.get('consumer_key') != None and os.environ.get('consumer_secret') and os.environ.get('access_token') != None and os.environ.get('access_token_secret') != None:
+            
+            click.secho('[+] User Found', fg = 'green')
+            break
+        else:
+
+            click.secho('[-] No user found', fg = 'red')
+            api_key = click.prompt('Enter Your API Key')
+            api_key_secret = click.prompt('Enter Your Api Key Secret')
+            access_token = click.prompt('Enter Your Access Token')
+            access_token_secret = click.prompt('Enter Your Access Token Secret')
+            with open('.env', 'a') as fi:
+                fi.write(f"\nconsumer_key={api_key}")
+                fi.write(f"\nconsumer_secret={api_key_secret}")
+                fi.write(f"\naccess_token={access_token}")
+                fi.write(f"\naccess_token_secret={access_token_secret}")
+                fi.close()
+            
+            click.secho('[+] User Entered', fg = 'blue')
+            break
+    
+    click.echo('''
+OPTIONS:
+-a : About Tweetle
+-c : Get a list of commands
+-v : Get the version
+-q : Quit''')
+    while True:
+        click.echo('\n')
+        inp = click.prompt('Tweetle')
+
+        if inp.lower() == '-a':
+            about()
+        elif inp.lower() == '-q':
+            break
+        elif inp.lower() == '-c':
+            commands()
+        else:
+            click.echo('Invalid Option')
+
+
+def about():
+    click.secho('''
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@/    , ,. &.@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@&* .@@@@@@@@@@@   (@@@@@@@@@@@@@@@@@@@@@@@
@@ -37,33 +96,21 @@ def cli():
 @@@@@@@@@@@@@@@@@@@@@@@@ *  @.( @,         @@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@%      , , # ..  @@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*        %@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-\n
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@''', fg = 'blue')
 
 
- ________  __       __  ________  ________  ________  __        ________ 
-|        \|  \  _  |  \|        \|        \|        \|  \      |        |
- \$$$$$$$$| $$ / \ | $$| $$$$$$$$| $$$$$$$$ \$$$$$$$$| $$      | $$$$$$$$
-   | $$   | $$/  $\| $$| $$__    | $$__       | $$   | $$      | $$__    
-   | $$   | $$  $$$\ $$| $$  \   | $$  \      | $$   | $$      | $$  \   
-   | $$   | $$ $$\$$\$$| $$$$$   | $$$$$      | $$   | $$      | $$$$$   
-   | $$   | $$$$  \$$$$| $$_____ | $$_____    | $$   | $$_____ | $$_____ 
-   | $$   | $$$    \$$$| $$     \| $$     \   | $$   | $$     \| $$     |
-    \$$    \$$      \$$ \$$$$$$$$ \$$$$$$$$    \$$    \$$$$$$$$ \$$$$$$$$
-                                                                         
-                                                                         
-                                                                         
+def commands():
+    click.secho('''
+-tweet: Use this command to tweet out anything. Usage: "-tweet Hi, I'm using tweetle"
+-fetch: Use this command to store a number of tweets based on a keyword in a database. Usage: "-fetch Elon Musk 5"
+-clean: Use this command to clean the database. Usage: "-clean"
+-data: Use this command to get all the data stored in the database. Usage: "-data"
+-row: Use this command to get data for a specifc row in the database. Usage: "-row 5"
+-first: Use this command to get the earliest entries in the database. Usage: "-first 5"
+-retweet: Use this command to retweet a particular row from the database. Usage: "-retweet 2"
+-latest: Use this command to see the database arranged by time. Usage: "-latest"''', fg = 'yellow')
 
 
-
-THIS IS T̲W̲E̲E̲T̲L̲E̲\n
-A CLI Made to control your tweefeed account and save information through your command line.
-'''
-    
-    pass
-
-@cli.command()
-@click.argument('tw', nargs = -1)
 def tweet(tw):
     '''This command tweets for you
 Example usage: tweetle tweet Hi, I'm using tweetle'''
@@ -72,8 +119,8 @@ Example usage: tweetle tweet Hi, I'm using tweetle'''
     tweet_obj.tweet(' '.join(i for i in tw))
     click.echo('Tweeted!')
 
-@cli.command()
-@click.argument('num', nargs = 1)
+
+
 def retweet(num):
     '''This command retweets the tweet for a specified row
 Example usage: tweetle retweet 5 (This will retweet the tweet for the 5th row in the database)'''
@@ -86,7 +133,7 @@ Example usage: tweetle retweet 5 (This will retweet the tweet for the 5th row in
 
     click.echo('Retweeted!')
 
-@cli.command()
+
 def CleanDB():
     '''Truncates the database
 Example usage: tweetle cleandb'''
@@ -94,9 +141,7 @@ Example usage: tweetle cleandb'''
     ProjPySQL.clean()
     click.echo('The database is now cleaned!')
 
-@cli.command()
-@click.argument('name', nargs = -1)
-@click.argument('num', nargs = 1)
+
 def fetch(name, num):
     '''Fetches a given amount of top tweets for a specific keyword and adds them to database
 Example usage: tweetle fetch Elon Musk 3'''
@@ -110,7 +155,6 @@ Example usage: tweetle fetch Elon Musk 3'''
     click.echo(f'Added {num} tweets to the database!')
 
 
-@cli.command()
 def alldata():
     '''A command to get all the data from the database
 Example usage: tweetle alldata'''
@@ -130,8 +174,7 @@ Example usage: tweetle alldata'''
 
     click.echo(table)
 
-@cli.command()
-@click.argument('num', nargs = 1)
+
 def getrow(num):
     '''A command to get a specific row
 Example usage: tweetle getrow 3'''
@@ -146,8 +189,7 @@ Timestamp: {data[3]}
 Url: {data[4]}
 Author: {data[5]}''')
 
-@cli.command()
-@click.argument('num', nargs = 1)
+
 def top(num):
     '''A command to get a specific number of top rows from the database
 Example usage: tweetle top 5'''
@@ -167,7 +209,7 @@ Example usage: tweetle top 5'''
 
     click.echo(table)
 
-@cli.command()
+
 def bytime():
     '''A command to get rows according to their timestamps (Latest first)
 Example usage: tweetle order'''
