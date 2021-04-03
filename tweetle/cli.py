@@ -21,98 +21,6 @@ def tweetObj():
 
 
 
-@click.command()
-def cli():
-    click.secho('''
-$$$$$$$$\                                 $$\     $$\           
-\__$$  __|                                $$ |    $$ |          
-   $$ |$$\  $$\  $$\  $$$$$$\   $$$$$$\ $$$$$$\   $$ | $$$$$$\  
-   $$ |$$ | $$ | $$ |$$  __$$\ $$  __$$\\_$$  _|  $$ |$$  __$$\ 
-   $$ |$$ | $$ | $$ |$$$$$$$$ |$$$$$$$$ | $$ |    $$ |$$$$$$$$ |
-   $$ |$$ | $$ | $$ |$$   ____|$$   ____| $$ |$$\ $$ |$$   ____|
-   $$ |\$$$$$\$$$$  |\$$$$$$$\ \$$$$$$$\  \$$$$  |$$ |\$$$$$$$\ 
-   \__| \_____\____/  \_______| \_______|  \____/ \__| \_______|''',fg = 'bright_cyan')
-
-    while True:
-        
-        click.secho('Looking for a user...', fg = 'bright_yellow')
-        if os.environ.get('consumer_key') != None and os.environ.get('consumer_secret') and os.environ.get('access_token') != None and os.environ.get('access_token_secret') != None:
-            
-            click.secho('[+] User Found', fg = 'bright_green')
-            break
-        else:
-
-            click.secho('[-] No user found', fg = 'bright_red')
-            api_key = click.prompt('Enter Your API Key')
-            api_key_secret = click.prompt('Enter Your Api Key Secret')
-            access_token = click.prompt('Enter Your Access Token')
-            access_token_secret = click.prompt('Enter Your Access Token Secret')
-            with open('.env', 'a') as fi:
-                fi.write(f"\nconsumer_key={api_key}")
-                fi.write(f"\nconsumer_secret={api_key_secret}")
-                fi.write(f"\naccess_token={access_token}")
-                fi.write(f"\naccess_token_secret={access_token_secret}")
-                fi.close()
-            
-            click.secho('[+] User Entered', fg = 'bright_blue')
-            break
-    
-    click.echo('''
-OPTIONS:
--a : About Tweetle
--c : Get a list of commands
--v : Get the version
--q : Quit''')
-    while True:
-        click.echo('\n')
-        inp = click.prompt('Tweetle')
-
-        if inp.lower() == '-a':
-            about()
-
-        elif inp.lower() == '-q':
-            break
-
-        elif inp.lower() == '-c':
-            commands()
-        
-        elif inp.startswith('-tweet'):
-            status = inp.split(' ')[1:]
-            click.echo(status)
-            tweet(status)
-
-        elif inp.startswith('-fetch'):
-            num = inp.split(' ')[-1]
-            keyword = inp.split(' ')[1:-1]
-            fetch(keyword, int(num))
-
-        elif inp.startswith('-clean'):
-            CleanDB()
-        
-        elif inp.startswith('-retweet'):
-            num = inp.split(' ')[1]
-            retweet(int(num))
-
-        elif inp.startswith('-data'):
-            alldata()
-
-        elif inp.startswith('-row'):
-            num = inp.split(' ')[1]
-            getrow(int(num))
-
-        elif inp.startswith('-first'):
-            num = inp.split(' ')[1]
-            top(int(num))
-
-        elif inp.startswith('-latest'):
-            bytime()
-
-        else:
-            click.echo('Invalid Option')
-
-
-
-
 
 def about():
     click.secho('''
@@ -270,3 +178,96 @@ Example usage: tweetle order'''
         table.add_row(i)
 
     click.echo(table)
+
+
+
+@click.command()
+def cli():
+    click.secho('''
+$$$$$$$$\                                 $$\     $$\           
+\__$$  __|                                $$ |    $$ |          
+   $$ |$$\  $$\  $$\  $$$$$$\   $$$$$$\ $$$$$$\   $$ | $$$$$$\  
+   $$ |$$ | $$ | $$ |$$  __$$\ $$  __$$\\_$$  _|  $$ |$$  __$$\ 
+   $$ |$$ | $$ | $$ |$$$$$$$$ |$$$$$$$$ | $$ |    $$ |$$$$$$$$ |
+   $$ |$$ | $$ | $$ |$$   ____|$$   ____| $$ |$$\ $$ |$$   ____|
+   $$ |\$$$$$\$$$$  |\$$$$$$$\ \$$$$$$$\  \$$$$  |$$ |\$$$$$$$\ 
+   \__| \_____\____/  \_______| \_______|  \____/ \__| \_______|''',fg = 'bright_cyan')
+
+    while True:
+        click.echo('\n')
+        click.secho('Looking for a user...', fg = 'bright_yellow')
+        if os.environ.get('consumer_key') != None and os.environ.get('consumer_secret') and os.environ.get('access_token') != None and os.environ.get('access_token_secret') != None:
+            
+            click.secho('[+] User Found', fg = 'bright_green')
+            break
+        else:
+
+            click.secho('[-] No user found', fg = 'bright_red')
+            api_key = click.prompt('Enter Your API Key')
+            api_key_secret = click.prompt('Enter Your Api Key Secret')
+            access_token = click.prompt('Enter Your Access Token')
+            access_token_secret = click.prompt('Enter Your Access Token Secret')
+            with open('.env', 'a') as fi:
+                fi.write(f"\nconsumer_key={api_key}")
+                fi.write(f"\nconsumer_secret={api_key_secret}")
+                fi.write(f"\naccess_token={access_token}")
+                fi.write(f"\naccess_token_secret={access_token_secret}")
+                fi.close()
+            
+            click.secho('[+] User Entered', fg = 'bright_blue')
+            break
+
+
+
+    click.echo('''
+OPTIONS:
+-a : About Tweetle
+-c : Get a list of commands
+-v : Get the version
+-q : Quit''')
+    while True:
+        click.echo('\n')
+        inp = click.prompt('Tweetle')
+
+        if inp.lower() == '-a':
+            about()
+
+        elif inp.lower() == '-q':
+            break
+
+        elif inp.lower() == '-c':
+            commands()
+        
+        elif inp.startswith('-tweet'):
+            status = inp.split(' ')[1:]
+            click.echo(status)
+            tweet(status)
+
+        elif inp.startswith('-fetch'):
+            num = inp.split(' ')[-1]
+            keyword = inp.split(' ')[1:-1]
+            fetch(keyword, int(num))
+
+        elif inp.startswith('-clean'):
+            CleanDB()
+        
+        elif inp.startswith('-retweet'):
+            num = inp.split(' ')[1]
+            retweet(int(num))
+
+        elif inp.startswith('-data'):
+            alldata()
+
+        elif inp.startswith('-row'):
+            num = inp.split(' ')[1]
+            getrow(int(num))
+
+        elif inp.startswith('-first'):
+            num = inp.split(' ')[1]
+            top(int(num))
+
+        elif inp.startswith('-latest'):
+            bytime()
+
+        else:
+            click.echo('Invalid Option')
