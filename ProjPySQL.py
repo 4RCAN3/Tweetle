@@ -1,72 +1,74 @@
 #Importing required modules
 import mysql.connector
 from datetime import datetime
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
+import commands
 
 #Establishing connection and creating cursor
-mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user= os.environ.get('user'),password=os.environ.get('pass'), port = 3306)
 
-#Table creation
-def create():
-    mycursor = mydb.cursor()
-    mycursor.execute("CREATE Table TweetDB (SrlNo int NOT NULL AUTO_INCREMENT PRIMARY KEY, TweetID bigint, TweetTXT varchar(500), _Timestamp datetime, _URL varchar(10000), Author varchar(50))")
+class db():
+    def __init__(self, user):
+        sql_user = commands.Commands(user).read_accs()[4]
+        pw = commands.Commands(user).read_accs()[5]
+        self.mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user= sql_user,password=pw, port = 3306)
 
-#Data insertion
-def Insert_Data(TweetList):
-    mycursor = mydb.cursor()
-    insert_query = "INSERT INTO TweetDB (TweetID,TweetTXT,_Timestamp,_URL,Author) VALUES(%s,%s,%s,%s,%s)"
-    records = (TweetList['id'], TweetList['tweet_text'], TweetList['timestamp'], TweetList['url'], TweetList['tweet_author'])
-    mycursor.execute(insert_query, records)
-    mydb.commit()
-    mycursor.close()
+    #Table creation
+    def create(self):
+        mycursor = self.mydb.cursor()
+        mycursor.execute("CREATE Table TweetDB (SrlNo int NOT NULL AUTO_INCREMENT PRIMARY KEY, TweetID bigint, TweetTXT varchar(500), _Timestamp datetime, _URL varchar(10000), Author varchar(50))")
 
-#Queries
+    #Data insertion
+    def Insert_Data(self, TweetList):
+        mycursor = self.mydb.cursor()
+        insert_query = "INSERT INTO TweetDB (TweetID,TweetTXT,_Timestamp,_URL,Author) VALUES(%s,%s,%s,%s,%s)"
+        records = (TweetList['id'], TweetList['tweet_text'], TweetList['timestamp'], TweetList['url'], TweetList['tweet_author'])
+        mycursor.execute(insert_query, records)
+        self.mydb.commit()
+        mycursor.close()
 
-#Ordering by timestamp
-def orderbytime():
-    mycursor = mydb.cursor(buffered=True)
-    mycursor.execute("SELECT * FROM TweetDB ORDER BY _Timestamp ASC")
-    mydb.commit()
-    res = mycursor.fetchall()
-    mycursor.close()
-    return res
+    #Queries
 
-#Fetching top x rows
-def selecttop(x):
-    mycursor = mydb.cursor(buffered=True)
-    query = '''SELECT * FROM TweetDB
-LIMIT {}'''.format(x)
-    mycursor.execute(query)
-    mydb.commit()
-    res = mycursor.fetchall()
-    mycursor.close()
-    return res
+    #Ordering by timestamp
+    def orderbytime(self):
+        mycursor = self.mydb.cursor(buffered=True)
+        mycursor.execute("SELECT * FROM TweetDB ORDER BY _Timestamp ASC")
+        self.mydb.commit()
+        res = mycursor.fetchall()
+        mycursor.close()
+        return res
 
-#Emptying the whole table
-def clean():
-    mycursor = mydb.cursor()
-    mycursor.execute("TRUNCATE TweetDB")
-    mydb.commit()
+    #Fetching top x rows
+    def selecttop(self, x):
+        mycursor = self.mydb.cursor(buffered=True)
+        query = '''SELECT * FROM TweetDB
+    LIMIT {}'''.format(x)
+        mycursor.execute(query)
+        self.mydb.commit()
+        res = mycursor.fetchall()
+        mycursor.close()
+        return res
 
-#Returning xth row
-def row(x):
-    mycursor = mydb.cursor(buffered=True)
-    query = '''SELECT * FROM TweetDB
-LIMIT {}'''.format(x)
-    mycursor.execute(query)
-    mydb.commit()
-    res = mycursor.fetchall()
-    res = res[len(res) - 1]
-    mycursor.close()
-    return res
+    #Emptying the whole table
+    def clean(self):
+        mycursor = self.mydb.cursor()
+        mycursor.execute("TRUNCATE TweetDB")
+        self.mydb.commit()
 
-def all_data():
-    mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM TweetDB")
-    res = mycursor.fetchall()
-    mycursor.close()
+    #Returning xth row
+    def row(self, x):
+        mycursor = self.mydb.cursor(buffered=True)
+        query = '''SELECT * FROM TweetDB
+    LIMIT {}'''.format(x)
+        mycursor.execute(query)
+        self.mydb.commit()
+        res = mycursor.fetchall()
+        res = res[len(res) - 1]
+        mycursor.close()
+        return res
 
-    return res
+    def all_data(self):
+        mycursor = self.mydb.cursor()
+        mycursor.execute("SELECT * FROM TweetDB")
+        res = mycursor.fetchall()
+        mycursor.close()
+
+        return res
