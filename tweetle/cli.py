@@ -53,8 +53,8 @@ $$$$$$$$\                                 $$\     $$\
                 click.secho('[+] User Found', fg = 'bright_green')
 
                 break
+            
             except Exception as e:
-                print(e)
                 click.secho('[-] Invalid User, Try Again.', fg = 'bright_red')
 
         else:
