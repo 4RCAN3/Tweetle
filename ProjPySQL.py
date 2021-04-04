@@ -9,7 +9,20 @@ class db():
     def __init__(self, user):
         sql_user = commands.Commands(user).read_accs()[4]
         pw = commands.Commands(user).read_accs()[5]
-        self.mydb = mysql.connector.connect(host="localhost",database = 'tweepy', user= sql_user,password=pw, port = 3306)
+        self.mydb = mysql.connector.connect(host="localhost", user= sql_user,password=pw, port = 3306)
+        mycursor = self.mydb.cursor()
+
+        try:
+            mycursor.execute("USE tweepy")
+        except mysql.connector.Error as err:
+            mycursor.execute("CREATE DATABASE tweepy")
+            mycursor.execute("USE tweepy")
+
+        try:
+            mycursor.execute("SELECT * FROM TweetDB")
+        except mysql.connector.Error as err:
+            print(err)
+            self.create()
 
     #Table creation
     def create(self):

@@ -35,6 +35,7 @@ class Commands():
                 user.replace("\n", "")
                 user = json.loads(user)
 
+
                 if choose_user in user:
                     key = user[choose_user]['Api_Key']
                     key_secret = user[choose_user]['Api_Secret']

@@ -47,8 +47,11 @@ $$$$$$$$\                                 $$\     $$\
                 api_key, api_key_secret, access_token, access_token_secret, sql_username, sql_pw = comm.read_accs()
                 import ProjPySQL
                 sql = ProjPySQL.db(user)
+                click.secho('[+] User Found', fg = 'bright_green')
+
                 break
-            except:
+            except Exception as e:
+                print(e)
                 click.secho('[-] Invalid User, Try Again.', fg = 'bright_red')
 
         else:
