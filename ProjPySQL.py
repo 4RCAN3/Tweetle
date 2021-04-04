@@ -21,7 +21,6 @@ class db():
         try:
             mycursor.execute("SELECT * FROM TweetDB")
         except mysql.connector.Error as err:
-            print(err)
             self.create()
 
     #Table creation

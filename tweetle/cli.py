@@ -51,7 +51,6 @@ $$$$$$$$\                                 $$\     $$\
 
                 break
             except Exception as e:
-                print(e)
                 click.secho('[-] Invalid User, Try Again.', fg = 'bright_red')
 
         else:
