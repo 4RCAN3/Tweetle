@@ -1,7 +1,7 @@
 #Importing required modules
 import mysql.connector
 from datetime import datetime
-import commands
+import tweetle.packages.commands as commands 
 
 #Establishing connection and creating cursor
 

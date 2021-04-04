@@ -1,13 +1,10 @@
 import click
-import tweefeed
+import tweetle.packages.tweefeed as tweefeed
 import os
 from dotenv import load_dotenv
 from prettytable import PrettyTable
 import stdiomask
 import json
-
-
-__author__ = 'ARC4N3'
 
 
 class Commands():
@@ -27,7 +24,7 @@ class Commands():
         Returns:
             [Tuple]: [Api key, Api key secret, Access token, Access token secret, SQL user, SQL pass]
         """        
-        with open("Accounts.txt") as acc:
+        with open("tweetle\Accounts.txt") as acc:
             choose_user = self.user
             users = acc.readlines()
             #Checking the user

@@ -1,8 +1,11 @@
 import click
-import commands
+import tweetle.packages.commands as commands
 import stdiomask
 import json
 
+__author__ = 'ARC4N3'
+__email__ = 'arcaneisc00l@gmail.com'
+__license__ = 'MIT'
 
 def write():
     username = click.prompt("Enter a username (Doesn't have to match your twitter username, can be anything)")
@@ -18,7 +21,7 @@ def write():
 
     account_info = {username: {'Api_Key': api_key, 'Api_Secret': api_key_secret, 'Access_Token': access_token, 'Access_Token_Secret': access_token_secret, 'sql_user': sql_user, 'pass': pw}}
 
-    with open("Accounts.txt", "a") as acc:
+    with open("tweetle\Accounts.txt", "a") as acc:
         account_info = json.dumps(account_info)
         acc.write(account_info + '\n')
         acc.close()
@@ -108,3 +111,9 @@ OPTIONS:
 
         else:
             click.echo('Invalid Option')
+
+
+"""
+Tweetle
+ARC4N3, 2021
+"""
