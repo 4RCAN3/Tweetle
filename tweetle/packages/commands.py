@@ -24,7 +24,7 @@ class Commands():
         Returns:
             [Tuple]: [Api key, Api key secret, Access token, Access token secret, SQL user, SQL pass]
         """        
-        with open("tweetle\Accounts.txt") as acc:
+        with open("tweetle\packages\Accounts.txt") as acc:
             choose_user = self.user
             users = acc.readlines()
             #Checking the user

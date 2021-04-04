@@ -21,7 +21,7 @@ def write():
 
     account_info = {username: {'Api_Key': api_key, 'Api_Secret': api_key_secret, 'Access_Token': access_token, 'Access_Token_Secret': access_token_secret, 'sql_user': sql_user, 'pass': pw}}
 
-    with open("tweetle\Accounts.txt", "a") as acc:
+    with open("tweetle\packages\Accounts.txt", "a") as acc:
         account_info = json.dumps(account_info)
         acc.write(account_info + '\n')
         acc.close()
@@ -48,12 +48,13 @@ $$$$$$$$\                                 $$\     $$\
             comm = commands.Commands(user)
             try:
                 api_key, api_key_secret, access_token, access_token_secret, sql_username, sql_pw = comm.read_accs()
-                import ProjPySQL
+                import tweetle.packages.ProjPySQL as ProjPySQL
                 sql = ProjPySQL.db(user)
                 click.secho('[+] User Found', fg = 'bright_green')
 
                 break
             except Exception as e:
+                print(e)
                 click.secho('[-] Invalid User, Try Again.', fg = 'bright_red')
 
         else:
