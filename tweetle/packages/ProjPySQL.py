@@ -21,19 +21,21 @@ class db():
         try:
             mycursor.execute("SELECT * FROM TweetDB")
         except mysql.connector.Error as err:
-            self.create()
+            self.create(mycursor)
+
         mycursor.close()
 
     #Table creation
-    def create(self):
-        mycursor = self.mydb.cursor()
-        mycursor.execute("CREATE Table TweetDB (SrlNo int NOT NULL AUTO_INCREMENT PRIMARY KEY, TweetID bigint, TweetTXT varchar(500), _Timestamp datetime, _URL varchar(10000), Author varchar(50))")
+    def create(self, mycursor):
+        print('here')
+        mycursor.execute("CREATE Table TweetDB (SrlNo int NOT NULL AUTO_INCREMENT PRIMARY KEY, TweetID bigint, Keyword varchar(500), _Timestamp datetime, Author varchar(50))")
+        self.mydb.commit()
 
     #Data insertion
-    def Insert_Data(self, TweetList):
+    def Insert_Data(self, TweetList, keyword):
         mycursor = self.mydb.cursor(buffered=True)
-        insert_query = "INSERT INTO TweetDB (TweetID,TweetTXT,_Timestamp,_URL,Author) VALUES(%s,%s,%s,%s,%s)"
-        records = (TweetList['id'], TweetList['tweet_text'], TweetList['timestamp'], TweetList['url'], TweetList['tweet_author'])
+        insert_query = "INSERT INTO TweetDB (TweetID,Keyword,_Timestamp,Author) VALUES(%s,%s,%s,%s)"
+        records = (TweetList['id'], keyword, TweetList['timestamp'], TweetList['tweet_author'])
         mycursor.execute(insert_query, records)
         self.mydb.commit()
         mycursor.close()

@@ -134,7 +134,7 @@ Example usage: tweetle fetch Elon Musk 3'''
         tweets = tweet_obj.fetch(' '.join(i for i in name), int(num))
         for tweet in tweets:
             tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https://twitter.com/twitter/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
-            ProjPySQL.Insert_Data(tweet_data)
+            ProjPySQL.Insert_Data(tweet_data, ' '.join(i for i in name))
         
         click.secho(f'[+] Added {num} tweets to the database!', fg = 'bright_green')
 
@@ -153,7 +153,7 @@ Example usage: tweetle alldata'''
                 temp_list.append(i)
             list_data.append(temp_list)
         
-        table = PrettyTable(['Serial No.', 'Tweet ID', 'Tweet Text', 'Tweet Time', 'Tweet URL', 'Tweet Author'])
+        table = PrettyTable(['Serial No.', 'Tweet ID', 'Keyword', 'Tweet Time', 'Tweet Author'])
 
         for i in list_data:
             table.add_row(i)
@@ -190,7 +190,7 @@ Example usage: tweetle top 5'''
                 temp_list.append(i)
             list_data.append(temp_list)
         
-        table = PrettyTable(['Serial No.', 'Tweet ID', 'Tweet Text', 'Tweet Time', 'Tweet URL', 'Tweet Author'])
+        table = PrettyTable(['Serial No.', 'Tweet ID', 'Keyword', 'Tweet Time', 'Tweet Author'])
 
         for i in list_data:
             table.add_row(i)
@@ -212,7 +212,7 @@ Example usage: tweetle order'''
                 temp_list.append(i)
             list_data.append(temp_list)
         
-        table = PrettyTable(['Serial No.', 'Tweet ID', 'Tweet Text', 'Tweet Time', 'Tweet URL', 'Tweet Author'])
+        table = PrettyTable(['Serial No.', 'Tweet ID', 'Keyword', 'Tweet Time', 'Tweet Author'])
 
         for i in list_data:
             table.add_row(i)
