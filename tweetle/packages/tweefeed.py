@@ -48,5 +48,7 @@ class Twitter():
     def tweet(self, arg):
         api = self.auth(self.api_key, self.api_secret, self.token, self.token_secret)
         api.update_status(status = arg)
-
-
+    
+    def prof(self):
+        api = self.auth(self.api_key, self.api_secret, self.token, self.token_secret)
+        return api.me()

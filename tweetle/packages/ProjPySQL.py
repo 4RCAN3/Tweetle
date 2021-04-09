@@ -10,7 +10,7 @@ class db():
         sql_user = commands.Commands(user).read_accs()[4]
         pw = commands.Commands(user).read_accs()[5]
         self.mydb = mysql.connector.connect(host="localhost", user= sql_user,password=pw, port = 3306)
-        mycursor = self.mydb.cursor()
+        mycursor = self.mydb.cursor(buffered=True)
 
         try:
             mycursor.execute("USE tweepy")
@@ -22,6 +22,7 @@ class db():
             mycursor.execute("SELECT * FROM TweetDB")
         except mysql.connector.Error as err:
             self.create()
+        mycursor.close()
 
     #Table creation
     def create(self):
@@ -30,7 +31,7 @@ class db():
 
     #Data insertion
     def Insert_Data(self, TweetList):
-        mycursor = self.mydb.cursor()
+        mycursor = self.mydb.cursor(buffered=True)
         insert_query = "INSERT INTO TweetDB (TweetID,TweetTXT,_Timestamp,_URL,Author) VALUES(%s,%s,%s,%s,%s)"
         records = (TweetList['id'], TweetList['tweet_text'], TweetList['timestamp'], TweetList['url'], TweetList['tweet_author'])
         mycursor.execute(insert_query, records)

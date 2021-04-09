@@ -18,6 +18,12 @@ class Commands():
         """        
         self.user = user
 
+    
+    def profile(self):
+        
+        return self.tweetObj().prof()
+        
+
     def read_accs(self):
         """[Reads The Accounts.txt file to get the user]
 
