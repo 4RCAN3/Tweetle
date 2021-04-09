@@ -133,7 +133,7 @@ Example usage: tweetle fetch Elon Musk 3'''
         tweet_obj = self.tweetObj()
         tweets = tweet_obj.fetch(' '.join(i for i in name), int(num))
         for tweet in tweets:
-            tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https://twitter.com/twitter/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
+            tweet_data = {'id' : tweet.id, 'tweet_text' : tweet.full_text, 'timestamp' : (tweet.created_at).strftime("%Y-%m-%d %H:%M:%S"), 'url' : f'https://twitter.com/twitter/statuses/{tweet.id}', 'tweet_author' : tweet.author.name}
             ProjPySQL.Insert_Data(tweet_data, ' '.join(i for i in name))
         
         click.secho(f'[+] Added {num} tweets to the database!', fg = 'bright_green')
@@ -166,14 +166,20 @@ Example usage: tweetle alldata'''
 Example usage: tweetle getrow 3'''
 
         data = ProjPySQL.row(int(num))
+
+        try:
+            tweet_text = self.tweetObj().get_tweet(data[1]).full_text
+        except:
+            tweet_text = self.tweetObj().get_tweet(data[1]).text
+
         
         click.secho(f'''
-Serial Number : {data[0]}
-ID: {data[1]}
-Tweet Text: {data[2]}
-Timestamp: {data[3]}
-Url: {data[4]}
-Author: {data[5]}''', fg = 'bright_green')
+{tweet_text}
+
+{data[3]}  -- by: {data[4]}
+
+Find the tweet at: https://twitter.com/twitter/statuses/{data[1]}
+Keyword Used: {data[2]}''', fg = 'bright_green')
 
 
     def top(self, ProjPySQL, num):

@@ -112,7 +112,7 @@ $$$$$$$$\                                 $$\     $$\
     data = vcolor(stats, pattern)
 
     #Welcome art
-    welcome = text2art('Welcome' + '  ' + my_user)
+    welcome = text2art('                         ' + 'Welcome' + '  ' + my_user)
     
     #Welcome animation
     colorama.init(autoreset = False)
@@ -125,18 +125,11 @@ $$$$$$$$\                                 $$\     $$\
 
     click.echo('\n')
 
-    #Your stats animation
-    your_stats = text2art('YOUR STATS')
-    for letter in your_stats:
-        sys.stdout.write(colorama.Fore.LIGHTRED_EX)
-        sys.stdout.write(letter)
-        sys.stdout.flush()
-        time.sleep(0.0000075)
-
     graph = Pyasciigraph()
 
     #Statistics animation
     for line in  graph.graph(f'Description: {my_desc}', data)[2:]:
+        sys.stdout.write('                                 ')
         for letter in line:
             sys.stdout.write(letter)
             sys.stdout.flush()

@@ -33,7 +33,7 @@ class Twitter():
         search_words = keyword
         tweets = tw.Cursor(api.search,
                     q=search_words,
-                    lang="en").items(arg)
+                    lang="en", tweet_mode = 'extended').items(arg)
 
         return tweets
     
@@ -52,3 +52,8 @@ class Twitter():
     def prof(self):
         api = self.auth(self.api_key, self.api_secret, self.token, self.token_secret)
         return api.me()
+    
+    def get_tweet(self, id):
+        api = self.auth(self.api_key, self.api_secret, self.token, self.token_secret)
+        tw = api.get_status(int(id), extended_mode = True)
+        return tw
