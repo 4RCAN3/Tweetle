@@ -4,12 +4,12 @@
  </p>
 <p align="center"><i><b>A python based CLI to control your twitter account and get analytical data</b></i></p>
 <p align="center">
-  <a href="https://github.com/4RCAN3/GenPai/stargazers"><img src="https://img.shields.io/github/stars/4RCAN3/GenPai" alt="Stars Badge"/></a>
-<a href="https://github.com/4RCAN3/GenPai/network/members"><img src="https://img.shields.io/github/forks/4RCAN3/GenPai" alt="Forks Badge"/></a>
-<a href="https://github.com/4RCAN3/GenPai/pulls"><img src="https://img.shields.io/github/issues-pr/4RCAN3/GenPai" alt="Pull Requests Badge"/></a>
-<a href="https://github.com/4RCAN3/GenPai/issues"><img src="https://img.shields.io/github/issues/4RCAN3/GenPai" alt="Issues Badge"/></a>
-<a href="https://github.com/4RCAN3/GenPai/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/4RCAN3/GenPai?color=2b9348"></a>
-<a href="https://github.com/4RCAN3/GenPai/blob/master/LICENSE"><img src="https://img.shields.io/github/license/4RCAN3/GenPai?color=2b9348" alt="License Badge"/></a>
+  <a href="https://github.com/4RCAN3/Tweetle/stargazers"><img src="https://img.shields.io/github/stars/4RCAN3/Tweetle" alt="Stars Badge"/></a>
+<a href="https://github.com/4RCAN3/Tweetle/network/members"><img src="https://img.shields.io/github/forks/4RCAN3/Tweetle" alt="Forks Badge"/></a>
+<a href="https://github.com/4RCAN3/Tweetle/pulls"><img src="https://img.shields.io/github/issues-pr/4RCAN3/Tweetle" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/4RCAN3/Tweetle/issues"><img src="https://img.shields.io/github/issues/4RCAN3/Tweetle" alt="Issues Badge"/></a>
+<a href="https://github.com/4RCAN3/Tweetle/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/4RCAN3/Tweetle?color=2b9348"></a>
+<a href="https://github.com/4RCAN3/Tweetle/blob/master/LICENSE"><img src="https://img.shields.io/github/license/4RCAN3/Tweetle?color=2b9348" alt="License Badge"/></a>
 </p>
 <br>
 
