@@ -55,7 +55,3 @@ Any contributions you make are **greatly appreciated**.
 
 
 <p align="center"> <a href="https://ko-fi.com/N4N144R2L"><img src="https://ko-fi.com/img/githubbutton_sm.svg"/></a></p>
-
-## :pencil: License
-
-This project is licensed under [MIT](https://opensource.org/licenses/MIT) license.
