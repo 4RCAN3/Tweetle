@@ -135,6 +135,13 @@ $$$$$$$$\                                 $$\     $$\
             sys.stdout.flush()
             time.sleep(0.02)
         print('\n')
+    
+    click.secho('''
+                                                OPTIONS:
+                                                -a : About Tweetle
+                                                -c : Get a list of commands
+                                                -q : Quit
+''', bold = True, fg = 'white')
 
 
     #Command prompts
@@ -145,14 +152,6 @@ $$$$$$$$\                                 $$\     $$\
 
         if inp.lower() == '-a':
             comm.about()
-
-        elif inp.lower == '-o':
-            click.echo('''
-OPTIONS:
--a : About Tweetle
--c : Get a list of commands
--v : Get the version
--q : Quit''')
 
         elif inp.lower() == '-q':
             break
