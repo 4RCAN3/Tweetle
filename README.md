@@ -22,7 +22,7 @@
 #### For windows:
 - `pip install tweetle`
 
-####For linux/macos:
+#### For linux/macos:
 - `pip3 install tweetle`
 <br>
 
