@@ -1,10 +1,11 @@
 <h1 align="center">Tweetle</h1>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/69053040/114283099-b0971d80-9a65-11eb-86b9-828b91979a82.png" alt = "Tweetle"/>
- </p>
+</p>
 <p align="center"><i><b>A python based CLI to control your twitter account and get analytical data</b></i></p>
 <p align="center">
   <a href="https://github.com/4RCAN3/Tweetle/stargazers"><img src="https://img.shields.io/github/stars/4RCAN3/Tweetle" alt="Stars Badge"/></a>
+</p>
 <a href="https://github.com/4RCAN3/Tweetle/network/members"><img src="https://img.shields.io/github/forks/4RCAN3/Tweetle" alt="Forks Badge"/></a>
 <a href="https://github.com/4RCAN3/Tweetle/pulls"><img src="https://img.shields.io/github/issues-pr/4RCAN3/Tweetle" alt="Pull Requests Badge"/></a>
 <a href="https://github.com/4RCAN3/Tweetle/issues"><img src="https://img.shields.io/github/issues/4RCAN3/Tweetle" alt="Issues Badge"/></a>
@@ -13,7 +14,7 @@
 </p>
 <br>
 
-<p align="center"><img src="https://media.discordapp.net/attachments/791081474425749577/830174345657450516/ezgif-7-0ab7a69f2594.gif" alt="Tweetle Gif">
+<p align="center"><img src="https://media.discordapp.net/attachments/791081474425749577/830174345657450516/ezgif-7-0ab7a69f2594.gif" alt="Tweetle Gif"></p>
 
 
 ## Installation
@@ -44,7 +45,7 @@
 ## Languages used
 <p align="center">
 <img src = "https://img.shields.io/badge/python%20-%236C0101.svg?style=for-the-badge&logo=python&logoColor=white" alt="python"/> <img alt="MySQL" src="https://img.shields.io/badge/mysql-%2300f.svg?&style=for-the-badge&logo=mysql&logoColor=white"/>
- </p>
+</p>
 
 ## Contribute
 Any contributions you make are **greatly appreciated**.
