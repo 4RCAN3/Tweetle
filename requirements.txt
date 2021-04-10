@@ -1,6 +1,3 @@
-certifi==2020.12.5       
-chardet==4.0.0
-click==7.1.2
 art==5.1
 ascii-graph==1.5.1
 ascii-magic==1.5.5
@@ -21,6 +18,6 @@ requests-oauthlib==1.3.0
 six==1.15.0
 stdiomask==0.0.6
 tweepy==3.10.0
--e git+https://github.com/4RCAN3/Tweetle/@3956257db9ce66a9905a70a348eb1e3262df111a#egg=tweetle
+-e git+https://github.com/4RCAN3/Tweetle/@6f11dcbd3989142c1b3d883e94fd225148d38a7e#egg=tweetle
 urllib3==1.26.4
 wcwidth==0.2.5
