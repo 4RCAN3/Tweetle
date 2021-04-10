@@ -37,8 +37,6 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/69053040/114283653-70856a00-9a68-11eb-8737-137efbcd3a3e.png" alt = "commands">
 </p>
 
-![image](https://user-images.githubusercontent.com/69053040/113216148-85f4da00-9299-11eb-870a-444303f1156c.png)
-
 <br>
 
 
