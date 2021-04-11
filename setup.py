@@ -2,12 +2,11 @@ from setuptools import setup, find_packages
 from setuptools import *
 from os import path
 
-def read_requirements():
-    with open('requirements.txt') as req:
-        content = req.read()
-        requirements = content.split('\n')
 
-long_description = '''
+with open ("requirements.txt") as f:
+    requirements = f.readlines()
+
+long_description = r'''
 <h1 align="center">Tweetle</h1>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/69053040/114283099-b0971d80-9a65-11eb-86b9-828b91979a82.png" alt = "Tweetle"/>
@@ -69,7 +68,7 @@ Any contributions you make are **greatly appreciated**.
 
 setup(
     name='tweetle',
-    version='0.1.5',
+    version='0.1.6',
     author = "ARC4N3",
     author_email = "arcaneisc00l@gmail.com",
     url = "https://github.com/4RCAN3/Tweetle",
@@ -79,7 +78,7 @@ setup(
     license = "MIT",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=read_requirements(),
+    install_requires=requirements,
     entry_points={
         "console_scripts": [
             "tweetle=tweetle.cli:cli"
