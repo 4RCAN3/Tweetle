@@ -68,7 +68,7 @@ Any contributions you make are **greatly appreciated**.
 
 setup(
     name='tweetle',
-    version='0.1.9',
+    version='1.0.1',
     author = "ARC4N3",
     author_email = "arcaneisc00l@gmail.com",
     url = "https://github.com/4RCAN3/Tweetle",

@@ -60,6 +60,7 @@ $$$$$$$$\                                 $$\     $$\
 
         #If the user wants to setup a new account
         else:
+            comm = commands.Commands(user)
             comm.write()
     
     #User's profile information
