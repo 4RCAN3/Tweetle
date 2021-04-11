@@ -60,7 +60,7 @@ $$$$$$$$\                                 $$\     $$\
 
         #If the user wants to setup a new account
         else:
-            write()
+            comm.write()
     
     #User's profile information
     me = comm.profile()

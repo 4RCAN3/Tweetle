@@ -23,7 +23,7 @@ class Commands():
         
         return self.tweetObj().prof()
     
-    def write():
+    def write(self):
         """
         A funtion to write the credentials of a user in a text file
         """    
