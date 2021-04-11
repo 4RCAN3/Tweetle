@@ -21,39 +21,6 @@ __email__ = 'arcaneisc00l@gmail.com'
 __license__ = 'MIT'
 
 
-
-
-def write():
-    """
-    A funtion to write the credentials of a user in a text file
-    """    
-
-    #Credentials will be identified from a username, it doesn't have to match the twitter username
-    username = click.prompt("Enter a username (Doesn't have to match your twitter username, can be anything)")
-
-    #getting the API keys and tokens
-    api_key = click.prompt('Enter Your API Key')
-    api_key_secret = click.prompt('Enter Your Api Key Secret')
-    access_token = click.prompt('Enter Your Access Token')
-    access_token_secret = click.prompt('Enter Your Access Token Secret')
-    
-    #Getting the SQL user and password
-    sql_user = click.prompt('Enter your SQL user')
-    pw = stdiomask.getpass('Enter your SQL password')
-    click.secho('Setting up user', fg = 'bright_yellow')
-
-    #The information is stored in a JSON format in the text file
-    account_info = {username: {'Api_Key': api_key, 'Api_Secret': api_key_secret, 'Access_Token': access_token, 'Access_Token_Secret': access_token_secret, 'sql_user': sql_user, 'pass': pw}}
-
-    with open("tweetle\packages\Accounts.txt", "a") as acc:
-        account_info = json.dumps(account_info)
-        acc.write(account_info + '\n')
-        acc.close()
-
-    click.secho('[+] Done setting up the user', fg = 'bright_blue')
-
-
-
 @click.command()
 def cli():
 
